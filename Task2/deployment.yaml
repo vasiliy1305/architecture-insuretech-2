@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-id-app
+  labels:
+    app: pod-id-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-id-app
+  template:
+    metadata:
+      labels:
+        app: pod-id-app
+    spec:
+      containers:
+        - name: pod-id-app
+          image: ghcr.io/yandex-practicum/scaletestapp:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 20Mi
+            limits:
+              memory: 30Mi
